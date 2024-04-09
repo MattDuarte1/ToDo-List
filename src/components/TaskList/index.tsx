@@ -4,11 +4,16 @@ import { NotFoundTasks } from "../NotFoundTasks";
 import { TaskItem } from "./TaskItem";
 
 interface TaskListProps {
-  tasks?: Tasks;
+  tasks: Tasks;
   changeCheckState: (taskId: string) => void;
+  onRemoveTask: (taskId: string) => void;
 }
 
-export const TaskList = ({ tasks = [], changeCheckState }: TaskListProps) => {
+export const TaskList = ({
+  tasks,
+  changeCheckState,
+  onRemoveTask,
+}: TaskListProps) => {
   return (
     <FlatList
       data={tasks}
@@ -19,6 +24,7 @@ export const TaskList = ({ tasks = [], changeCheckState }: TaskListProps) => {
           isChecked={item.checked}
           title={item.title}
           onChangeChecked={changeCheckState}
+          onRemoveTask={onRemoveTask}
         />
       )}
       ListEmptyComponent={<NotFoundTasks />}

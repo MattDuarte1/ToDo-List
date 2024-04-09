@@ -74,6 +74,11 @@ export const Home = () => {
     setTasks(newTasks);
   };
 
+  const handleRemoveTask = (taskId: string) => {
+    const newTasks = tasks.filter((task) => task.id !== taskId);
+    setTasks(newTasks);
+  };
+
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
       <Header />
@@ -85,7 +90,11 @@ export const Home = () => {
           totalTasksQuantity={tasks.length}
         />
 
-        <TaskList tasks={tasks} changeCheckState={handleCheckedTask} />
+        <TaskList
+          tasks={tasks}
+          changeCheckState={handleCheckedTask}
+          onRemoveTask={handleRemoveTask}
+        />
       </View>
     </View>
   );

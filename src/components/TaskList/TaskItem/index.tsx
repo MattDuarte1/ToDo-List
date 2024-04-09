@@ -9,6 +9,7 @@ interface TaskItemProps {
   title: string;
   isChecked: boolean;
   onChangeChecked: (taskId: string) => void;
+  onRemoveTask: (taskId: string) => void;
 }
 
 export const TaskItem = ({
@@ -16,6 +17,7 @@ export const TaskItem = ({
   title,
   id,
   onChangeChecked,
+  onRemoveTask,
 }: TaskItemProps) => {
   const [pressed, setPressed] = useState(false);
 
@@ -51,9 +53,7 @@ export const TaskItem = ({
       <Pressable
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
-        onPress={() => {
-          console.log("clicou");
-        }}
+        onPress={() => onRemoveTask(id)}
         style={({ pressed }) => [
           styles.button,
           { backgroundColor: pressed ? "#333333" : "transparent" },
