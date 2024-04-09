@@ -60,6 +60,20 @@ export const Home = () => {
     setTaskName,
   };
 
+  const handleCheckedTask = (taskId: string) => {
+    const newTasks = tasks.map((task) => {
+      if (task.id === taskId) {
+        return {
+          ...task,
+          checked: !task.checked,
+        };
+      }
+      return task;
+    });
+
+    setTasks(newTasks);
+  };
+
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
       <Header />
@@ -71,7 +85,7 @@ export const Home = () => {
           totalTasksQuantity={tasks.length}
         />
 
-        <TaskList tasks={tasks} />
+        <TaskList tasks={tasks} changeCheckState={handleCheckedTask} />
       </View>
     </View>
   );

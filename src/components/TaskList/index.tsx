@@ -5,15 +5,21 @@ import { TaskItem } from "./TaskItem";
 
 interface TaskListProps {
   tasks?: Tasks;
+  changeCheckState: (taskId: string) => void;
 }
 
-export const TaskList = ({ tasks = [] }: TaskListProps) => {
+export const TaskList = ({ tasks = [], changeCheckState }: TaskListProps) => {
   return (
     <FlatList
       data={tasks}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
-        <TaskItem isChecked={item.checked} title={item.title} />
+        <TaskItem
+          id={item.id}
+          isChecked={item.checked}
+          title={item.title}
+          onChangeChecked={changeCheckState}
+        />
       )}
       ListEmptyComponent={<NotFoundTasks />}
       showsVerticalScrollIndicator={false}

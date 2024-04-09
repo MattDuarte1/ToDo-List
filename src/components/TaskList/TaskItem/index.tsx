@@ -5,11 +5,18 @@ import { styles } from "./styles";
 import { useState } from "react";
 
 interface TaskItemProps {
+  id: string;
   title: string;
   isChecked: boolean;
+  onChangeChecked: (taskId: string) => void;
 }
 
-export const TaskItem = ({ isChecked = false, title }: TaskItemProps) => {
+export const TaskItem = ({
+  isChecked = false,
+  title,
+  id,
+  onChangeChecked,
+}: TaskItemProps) => {
   const [pressed, setPressed] = useState(false);
 
   const handlePressIn = () => {
@@ -25,7 +32,9 @@ export const TaskItem = ({ isChecked = false, title }: TaskItemProps) => {
         style={styles.checkbox}
         value={isChecked}
         color={isChecked ? "#5E60CE" : undefined}
-        onValueChange={() => {}}
+        onValueChange={() => {
+          onChangeChecked(id);
+        }}
       />
       <Text
         style={[
