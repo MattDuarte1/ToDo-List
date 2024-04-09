@@ -1,27 +1,27 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    width: "100%",
     height: 54,
     gap: 5,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   input: {
     flex: 1,
     borderRadius: 6,
     padding: 16,
-    backgroundColor: '#262626',
+    backgroundColor: "#262626",
     fontSize: 16,
-    color: '#F2F2F2',
-    fontFamily: 'Inter-Regular'
+    color: "#F2F2F2",
+    fontFamily: "Inter-Regular",
   },
   button: {
     width: 52,
     height: 52,
     borderRadius: 6,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#1E6F9F'
-  }
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#1E6F9F",
+  },
 });

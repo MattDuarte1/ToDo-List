@@ -1,6 +1,7 @@
 import { Text, TextInput, Pressable, View } from "react-native";
 import { styles } from "./styles";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import { useState } from "react";
 
 interface InputProps {
   taskNameHook: {
@@ -11,14 +12,29 @@ interface InputProps {
 }
 
 export const Input = ({ taskNameHook, addTask }: InputProps) => {
+  const [isFocused, setIsFocused] = useState<boolean>(false);
+
+  const handleFocus = () => setIsFocused((prevState) => !prevState);
+
+  const handleBlur = () => setIsFocused((prevState) => !prevState);
+
   return (
     <View style={styles.container}>
       <TextInput
-        style={styles.input}
+        style={[
+          styles.input,
+          {
+            borderColor: isFocused ? "#5E60CE" : "transparent",
+            borderWidth: 1,
+          },
+        ]}
         value={taskNameHook.taskName}
         onChangeText={(e) => taskNameHook.setTaskName(e)}
         placeholder="Adicione uma nova tarefa"
         placeholderTextColor="#808080"
+        cursorColor="#F2F2F2"
+        onFocus={handleFocus}
+        onBlur={handleBlur}
       />
       <Pressable
         style={({ pressed }) => [
