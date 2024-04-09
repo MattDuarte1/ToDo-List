@@ -6,6 +6,7 @@ import { Input } from "../../components/Input";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback } from "react";
+import { TaskInfoCountResult } from "../../components/TaskInfo";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -29,6 +30,8 @@ export const Home = () => {
       <Header />
       <View style={styles.content}>
         <Input />
+
+        <TaskInfoCountResult />
       </View>
     </View>
   );
