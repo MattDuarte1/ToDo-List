@@ -85,13 +85,18 @@ export const Home = () => {
     return null;
   }
 
+  const completedTasksQuantity = tasks.filter((task) => task.checked).length;
+
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
       <Header />
       <View style={styles.content}>
         <Input />
 
-        <TaskInfoCountResult />
+        <TaskInfoCountResult
+          completedTasksQuantity={completedTasksQuantity}
+          totalTasksQuantity={tasks.length}
+        />
 
         <TaskList tasks={tasks} />
       </View>
