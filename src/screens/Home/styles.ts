@@ -5,15 +5,11 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#1E1E1E",
     alignItems: "center",
+    paddingBottom: 30,
   },
   content: {
     width: "100%",
     marginTop: -30,
     maxWidth: 327,
-  },
-  separator: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#333333",
   },
 });
