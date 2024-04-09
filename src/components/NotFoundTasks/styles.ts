@@ -22,4 +22,8 @@ export const styles = StyleSheet.create({
     color: "#808080",
     textAlign: "center",
   },
+  separator: {
+    borderBottomWidth: 1,
+    borderBottomColor: "#333333",
+  },
 });

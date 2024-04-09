@@ -7,5 +7,6 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     maxHeight: 25,
     marginTop: 34,
+    marginBottom: 20,
   },
 });
