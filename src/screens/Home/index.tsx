@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { Alert, View } from "react-native";
 import { styles } from "./styles";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
@@ -18,58 +18,9 @@ export type Tasks = {
 }[];
 
 export const Home = () => {
-  const [tasks, setTasks] = useState<Tasks>([
-    {
-      id: "1",
-      title: "Tarefa 1",
-      checked: false,
-    },
-    {
-      id: "2",
-      title: "Tarefa 2",
-      checked: false,
-    },
-    {
-      id: "3",
-      title: "Tarefa 3",
-      checked: false,
-    },
-    {
-      id: "4",
-      title: "Tarefa 4",
-      checked: false,
-    },
-    {
-      id: "5",
-      title: "Tarefa 5",
-      checked: false,
-    },
-    {
-      id: "6",
-      title: "Tarefa 6",
-      checked: true,
-    },
-    {
-      id: "7",
-      title: "Tarefa 7",
-      checked: true,
-    },
-    {
-      id: "8",
-      title: "Tarefa 8",
-      checked: true,
-    },
-    {
-      id: "9",
-      title: "Tarefa 9",
-      checked: false,
-    },
-    {
-      id: "10",
-      title: "Tarefa 10",
-      checked: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState<Tasks>([]);
+  const [taskName, setTaskName] = useState<string>("");
+
   const [fontsLoaded, fontError] = useFonts({
     "Inter-Regular": require("../../../assets/fonts/inter-regular.otf"),
     "Inter-Bold": require("../../../assets/fonts/inter-bold.otf"),
@@ -87,11 +38,33 @@ export const Home = () => {
 
   const completedTasksQuantity = tasks.filter((task) => task.checked).length;
 
+  const handleCreateTask = () => {
+    if (tasks.find((task) => task.title === taskName)) {
+      return Alert.alert("Tarefa", "Essa tarefa já existe!.");
+    }
+
+    setTasks((prevState) => [
+      ...prevState,
+      {
+        id: String(prevState.length + 1),
+        title: taskName,
+        checked: false,
+      },
+    ]);
+
+    setTaskName("");
+  };
+
+  const taskNameHook = {
+    taskName,
+    setTaskName,
+  };
+
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
       <Header />
       <View style={styles.content}>
-        <Input />
+        <Input taskNameHook={taskNameHook} addTask={handleCreateTask} />
 
         <TaskInfoCountResult
           completedTasksQuantity={completedTasksQuantity}
