@@ -32,6 +32,8 @@ export const Home = () => {
         <Input />
 
         <TaskInfoCountResult />
+
+        <View style={styles.separator}></View>
       </View>
     </View>
   );

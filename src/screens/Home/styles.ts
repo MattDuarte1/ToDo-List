@@ -11,4 +11,9 @@ export const styles = StyleSheet.create({
     marginTop: -30,
     maxWidth: 327,
   },
+  separator: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#333333",
+  },
 });
